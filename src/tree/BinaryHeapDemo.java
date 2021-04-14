@@ -1,35 +1,35 @@
 package tree;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class BinaryHeapDemo {
     public static void main(String[] args) {
-        // BinaryHeap heap = new BinaryHeap(10);
-    
-        // for (int i = 0; i < 10; i++) {
-        //     heap.push(new Random().nextInt(20));
-        // }
-        
-        // System.out.println(heap.peek());
-        
-        int[] A = {62, 41, 30, 28, 16, 22, 13, 19, 17, 15, 52};
+        // int[] A = {62, 41, 30, 28, 16, 22, 13, 19, 17, 15, 52};
+        int[] A = {62, 41, 30, 28, 16, 22, 13, 19, 17, 15};
         BinaryHeap heap = new BinaryHeap(A);
         System.out.println("heap.peek() = " + heap.peek());
+        System.out.println("heap.pop() = " + heap.pop());
     
-        System.out.println("heap.size() = " + heap.size());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.size() = " + heap.size());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.pop() = " + heap.pop());
-        System.out.println("heap.size() = " + heap.size());
+        heap.replace(-1);
         System.out.println("heap.peek() = " + heap.peek());
+    
+        System.out.println("===============");
+        int[] arr = new int[new Random().nextInt(1000000)];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = new Random().nextInt(100000);
+        }
+    
+        BinaryHeap heap1 = new BinaryHeap(arr);
+        int cur = heap1.peek();
+        for (int i = 0; i < arr.length; i++) {
+            if (cur > heap1.peek()) {
+                System.out.println("error!");
+            }
+            cur = heap1.pop();
+        }
+    
+        System.out.println("heap1.isEmpty() = " + heap1.isEmpty());
     }
 }
 
@@ -51,12 +51,16 @@ class BinaryHeap {
     }
     
     private void heapify() {
-        for (int i = heap.length - 2 >> 1; i >= 0 ; i--) {
+        for (int i = heap.length - 2 >> 1; i >= 0; i--) {
             siftDown(i);
         }
     }
     
     public int peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("Illegal peek");
+        }
+        
         return heap[0];
     }
     
@@ -79,22 +83,16 @@ class BinaryHeap {
     
     private void siftDown(int pos) {
         int cur = heap[pos];
-        while (pos * 2 + 1 < size - 1) {
-            int smallerIdx = pos, tmp = cur;
-            int leftIdx = leftChild(pos);
-            if (heap[leftIdx] < tmp) {
-                smallerIdx = leftIdx;
-                tmp = heap[leftIdx];
-            }
-            
-            if (pos * 2 + 2 < size - 1) {
-                int rightIdx = rightChild(pos);
-                if (heap[rightIdx] < tmp) {
+        while (leftChild(pos) < size) {
+            int smallerIdx = leftChild(pos);
+            if (smallerIdx + 1 < size) {
+                int rightIdx = smallerIdx + 1;
+                if (heap[rightIdx] < heap[smallerIdx]) {
                     smallerIdx = rightIdx;
                 }
             }
             
-            if (smallerIdx == pos) {
+            if (cur <= heap[smallerIdx]) {
                 break;
             }
             
@@ -124,15 +122,20 @@ class BinaryHeap {
         return pos * 2 + 1;
     }
     
-    private int rightChild(int pos) {
-        return pos * 2 + 2;
-    }
-    
     public int size() {
         return size;
     }
     
     public boolean isEmpty() {
         return size == 0;
+    }
+    
+    public void replace(int x) {
+        if (isEmpty()) {
+            throw new RuntimeException("Illegal replace");
+        }
+        
+        heap[0] = x;
+        siftDown(0);
     }
 }
