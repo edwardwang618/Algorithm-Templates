@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BinaryTreePreorderTraversal {
+public class BinaryTreeInorderTraversal {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -18,43 +18,40 @@ public class BinaryTreePreorderTraversal {
         root.right.left.right = new TreeNode(8);
         
         List<Integer> list = new ArrayList<>();
-        preorder(root, list);
+        inorder(root, list);
         System.out.println(list);
         
         list.clear();
         
-        preorder2(root, list);
+        inorder2(root, list);
         System.out.println(list);
     }
     
-    private static void preorder(TreeNode root, List<Integer> res) {
+    public static void inorder(TreeNode root, List<Integer> res) {
         if (root == null) {
             return;
         }
         
+        inorder(root.left, res);
         res.add(root.val);
-        preorder(root.left, res);
-        preorder(root.right, res);
+        inorder(root.right, res);
     }
     
-    public static void preorder2(TreeNode root, List<Integer> res) {
+    public static void inorder2(TreeNode root, List<Integer> res) {
         if (root == null) {
             return;
         }
         
         Deque<TreeNode> stack = new LinkedList<>();
-        
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            root = stack.pop();
+        while (!stack.isEmpty() || root != null) {
             while (root != null) {
-                res.add(root.val);
-                if (root.right != null) {
-                    stack.push(root.right);
-                }
-                
+                stack.push(root);
                 root = root.left;
             }
+            
+            root = stack.pop();
+            res.add(root.val);
+            root = root.right;
         }
     }
 }
