@@ -44,7 +44,11 @@ public class Dijkstra1 {
             
             visited[v] = true;
             for (int j = 0; j < graph[v].length; j++) {
-                if (!visited[j] && graph[v][j] != Integer.MAX_VALUE && dist[j] > dist[v] + graph[v][j]) {
+                if (graph[v][j] == Integer.MAX_VALUE) {
+                    continue;
+                }
+                
+                if (!visited[j] && dist[j] > dist[v] + graph[v][j]) {
                     dist[j] = dist[v] + graph[v][j];
                 }
             }
