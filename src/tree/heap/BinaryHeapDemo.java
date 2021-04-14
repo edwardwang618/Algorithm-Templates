@@ -1,4 +1,4 @@
-package tree;
+package tree.heap;
 
 import java.util.Arrays;
 import java.util.Random;
