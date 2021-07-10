@@ -49,6 +49,9 @@ class LinkedList {
         deleteAfter(dummy);
     }
     
+    // in a singly linkedlist, if you want to delete a node,
+    // you have to know its predecessor
+    // in this method, we are delete node.next
     private void deleteAfter(ListNode node) {
         if (node.next == null) {
             throw new RuntimeException("Illegal delte");
@@ -85,7 +88,9 @@ class LinkedList {
 }
 
 class ListNode {
+    // its value
     int x;
+    // the successor location
     ListNode next;
     
     public ListNode(int x) {

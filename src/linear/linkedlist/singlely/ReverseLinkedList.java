@@ -22,8 +22,12 @@ public class ReverseLinkedList {
         printList(res2);
     }
     
+    // reverse the linkedlist of head and return the first node of the new list
     public static ListNode reverseNonRecursion(ListNode head) {
+        // prev is the head of the new reversed linked list
         ListNode prev = null, tmp = null;
+        // every loop, add the node to the beginning of the new list, and maintain
+        // the definition of prev
         while (head != null) {
             tmp = head.next;
             head.next = prev;
@@ -34,12 +38,14 @@ public class ReverseLinkedList {
         return prev;
     }
     
+    // reverse the linkedlist of head and return the first node of the new list
     public static ListNode reverseRecursion(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
         
         ListNode res = reverseRecursion(head.next);
+        // ...
         head.next.next = head;
         head.next = null;
         return res;
@@ -53,6 +59,7 @@ public class ReverseLinkedList {
             }
             head = head.next;
         }
+        
         System.out.println();
     }
 }

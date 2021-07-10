@@ -21,6 +21,9 @@ public class FindMiddle {
         System.out.println(findMiddle(head).x);
     }
     
+    // two pointers on linkedlist
+    //         s     f
+    // d->  1->2->3->4->null
     public static ListNode findMiddle(ListNode head) {
         if (head == null) {
             return null;

@@ -4,7 +4,11 @@ import java.util.Arrays;
 
 public class DifferenceArray {
     public static void main(String[] args) {
+        // given an array, there are many operations, each one asks you to
+        // sum the interval by a number
         int[] A = {1, 2, 0, 3, -1};
+        // construct the diff array -> do the operation(O(1)) -> restore back to the original
+        // [1, 1, -2, 3, -4]
         int[] diff = diffArr(A), diff2 = difArr2(A);
         System.out.println(Arrays.equals(diff, diff2));
     
@@ -15,7 +19,9 @@ public class DifferenceArray {
         System.out.println(Arrays.equals(orig, A));
         
         add(diff, 0, 2, 2);
+        // 3, 4, 2, 3, -1
         add(diff, 1, 3, 3);
+        // 3, 7, 5, 6, -1
     
         System.out.println(Arrays.toString(diff));
         System.out.println(Arrays.toString(restore(diff)));
@@ -31,6 +37,8 @@ public class DifferenceArray {
         return diff;
     }
     
+    // A = [1, 2, 0, 2, ...]        [        ]      DA
+    // C = [0, 0, 0, 0, ...] ori -> [0, 0, 0, 0, ]  DC
     static int[] difArr2(int[] A) {
         int[] diff = new int[A.length];
         for (int i = 0; i < A.length; i++) {
@@ -40,6 +48,8 @@ public class DifferenceArray {
         return diff;
     }
     
+    // [,,, A[l], ..., A[r], .. ]  original
+    // [,.., +x , ...     , -x  ]       difference
     static void add(int[] diff, int l, int r, int x) {
         diff[l] += x;
         if (r + 1 < diff.length) {

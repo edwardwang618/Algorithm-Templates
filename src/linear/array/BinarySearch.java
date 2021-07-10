@@ -2,14 +2,15 @@ package linear.array;
 
 public class BinarySearch {
     public static void main(String[] args) {
+        // For an interval [l, r], you can guarantee
         int[] A = {1, 3, 4, 7, 10};
-        System.out.println(binSearch1(A, 5));
+        System.out.println(binSearch1(A, 15));
         System.out.println(binSearchRec1(A, 5));
     
         System.out.println(binSearch2(A, 5));
     }
     
-    // Find the index of the first number that's >= x
+    // Find the index of the first(smallest) number that's A[i] >= x
     // [NO, NO, ..., NO, YES, YES, ...]
     // if not found, return -1
     public static int binSearch1(int[] A, int x) {
@@ -27,6 +28,7 @@ public class BinarySearch {
             }
         }
         
+        // When you can guarantee the answer exists, then don't need to check;   return l;
         return A[l] >= x ? l : -1;
     }
     
