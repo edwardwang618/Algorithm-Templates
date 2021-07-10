@@ -18,6 +18,8 @@ public class ArrayStack {
 
 class Stack {
     private int[] stk;
+    
+    // top is the position next to the top element
     private int top;
     
     public Stack(int maxSize) {

@@ -10,6 +10,7 @@ public class ExpressionValuationInfix {
         System.out.println(evaluate("(7+2)/ (1 + 2)"));
     }
     
+    // s is an infix polish expression, evaluate it
     public static int evaluate(String s) {
         Map<Character, Integer> prio = Map.of(
                 '(', 0,

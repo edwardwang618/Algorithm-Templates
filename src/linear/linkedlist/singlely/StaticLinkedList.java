@@ -14,6 +14,7 @@ public class StaticLinkedList {
     }
 }
 
+// use array to simulate the linkedlist
 class StaticList {
     private static final int N = 100000;
     private int h, idx;

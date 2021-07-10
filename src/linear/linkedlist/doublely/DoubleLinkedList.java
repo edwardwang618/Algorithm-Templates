@@ -61,6 +61,23 @@ class LinkedList {
         size++;
     }
     
+    public void addAfter(ListNode node, int x) {
+        ListNode n = new ListNode(x);
+        // deal with pointers pointing from x
+        n.prev = node;
+        n.next = node.next;
+        
+        // deal with pointers pointing to x
+        node.next = n;
+        
+        // in linkedlist problem, take care of null pointer exception
+        if (n.next != null) {
+            n.next.prev = n;
+        }
+        
+        size++;
+    }
+    
     public void deleteFirst() {
         if (size == 0) {
             throw new RuntimeException("Illegal delete");
@@ -71,7 +88,7 @@ class LinkedList {
         } else {
             head = head.next;
             head.prev.next = null;
-            head.prev = null;
+            head.prev = null; //  must do, due to garbage collection
         }
         
         size--;
