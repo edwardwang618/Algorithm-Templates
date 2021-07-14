@@ -29,6 +29,8 @@ public class ArrayQueue {
 
 class Queue {
     private int[] q;
+    // head is the index for the first element,
+    // tail is the index after the last element
     private int head, tail;
     private int size;
     
@@ -43,6 +45,9 @@ class Queue {
         
         q[tail++] = x;
         tail %= q.length;
+        // if (tail == q.length) {
+        //     tail = 0;
+        // }
         size++;
     }
     
