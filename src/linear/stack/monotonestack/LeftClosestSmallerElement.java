@@ -17,6 +17,8 @@ public class LeftClosestSmallerElement {
         // B = [-1, 0, 1,-1,3, -1]
         System.out.println(Arrays.toString(getLastIndexSmallerThanCur(A)));
         System.out.println(Arrays.toString(solve(A)));
+        System.out.println(Arrays.toString(lookRightSmaller(A)));
+        System.out.println(Arrays.toString(lookRightSmallerValue(A)));
     }
     
     // 1 3 5 2 0
@@ -80,7 +82,8 @@ public class LeftClosestSmallerElement {
         return res;
     }
     
-    // look left, find the closest less or equal, return the index
+    // look left, find the closest larger, return the index
+    // maitain increasing stack
     public static int[] solve(int[] A) {
         int[] res = new int[A.length];
         
@@ -96,4 +99,67 @@ public class LeftClosestSmallerElement {
         
         return res;
     }
+    
+    // 3, 5, 6, 1, 2, 0
+    //         1, 1, 1, 0, 0, -1
+    //
+    // look right, find first smaller
+    // increasing stack
+    //
+    // push 3, 5, 6, attempt to push 1, 6 > 1, for 6, ans is idx of 1, pop6
+    // 5>1, for 5, ans is idx of 1, pop 5, 3>1, for 3, ans is idx of 1, pop 3
+    //     stack empty, push 1
+    //             [1
+    //
+    //     push 2, attemp to push 0, 2 > 0, for 2, ans is idx of 2, pop 2, 1 >0, for 1 ans is idx of 0, pop 1, push 0
+    //             [0
+    //
+    //
+    //     stack not empty
+    //     pop0, for 0, is -1
+    //             [
+    public static int[] lookRightSmaller(int[] A) {
+        Deque<Integer> stk = new ArrayDeque<>();
+        // idx
+        int[] res = new int[A.length];
+        for (int i = 0; i < A.length; i++) {
+            while (!stk.isEmpty() && A[stk.peek()] > A[i]) {
+                res[stk.pop()] = i;
+            }
+            
+            stk.push(i);
+        }
+        
+        while (!stk.isEmpty()) {
+            res[stk.pop()] = -1;
+        }
+        
+        return res;
+    }
+    
+    public static int[] lookRightSmallerValue(int[] A) {
+        Deque<Integer> stk = new ArrayDeque<>();
+        // idx
+        int[] res = new int[A.length];
+        for (int i = 0; i < A.length; i++) {
+            while (!stk.isEmpty() && A[stk.peek()] > A[i]) {
+                res[stk.pop()] = A[i];
+            }
+            
+            stk.push(i);
+        }
+        
+        while (!stk.isEmpty()) {
+            res[stk.pop()] = -1;
+        }
+        
+        return res;
+    }
+    
+    // For look left —> you know the answer when push it
+    // For look right —> you know the answer when you pop it
+    
+    // lots of big tech love this algo
+    // this algo can be applied in the monotone queue algorithm,
+    // and in some optimization in dynamic programming problems
 }
