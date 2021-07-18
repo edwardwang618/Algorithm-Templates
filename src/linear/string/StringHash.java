@@ -23,6 +23,11 @@ public class StringHash {
         System.out.println(hashSubStr(hashS, 1, 2) == hashSubStr(hashT, 0, 1));
         System.out.println(hashSubStr(hashS, 0, 1) == hashSubStr(hashT, 2, 3));
         System.out.println(hashSubStr(hashS, 1, 3) == hashSubStr(hashT, 1, 3));
+    
+        System.out.println((int) 'a');
+        System.out.println((int) 'A');
+        
+        
     }
     
     public static long hashSubStr(long[] hashS, int l, int r) {

@@ -1,4 +1,4 @@
-package tree.advanced;
+package tree.special;
 
 public class TrieDemo {
     public static void main(String[] args) {

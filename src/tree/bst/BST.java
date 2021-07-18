@@ -1,4 +1,4 @@
-package tree.advanced;
+package tree.bst;
 
 public class BST<Integer> {
     private class Node {

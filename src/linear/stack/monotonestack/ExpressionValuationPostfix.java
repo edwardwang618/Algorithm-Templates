@@ -1,4 +1,4 @@
-package linear.stack.classical;
+package linear.stack.monotonestack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
