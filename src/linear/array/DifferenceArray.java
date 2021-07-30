@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class DifferenceArray {
     public static void main(String[] args) {
         // given an array, there are many operations, each one asks you to
-        // sum the interval by a number
+        // add a number to an interval
         int[] A = {1, 2, 0, 3, -1};
         // construct the diff array -> do the operation(O(1)) -> restore back to the original
         // [1, 1, -2, 3, -4]

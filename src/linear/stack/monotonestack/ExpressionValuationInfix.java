@@ -18,6 +18,8 @@ public class ExpressionValuationInfix {
                 '*', 2, '/', 2);
         
         Deque<Integer> stack = new ArrayDeque<>();
+        // maintain the stack op as a monotone stack, op stores the operators
+        // in the increasing order from button to the top
         Deque<Character> op = new ArrayDeque<>();
         
         for (int i = 0; i < s.length(); i++) {
