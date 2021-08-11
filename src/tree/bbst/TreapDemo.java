@@ -1,5 +1,6 @@
 package tree.bbst;
 
+import java.util.Collection;
 import java.util.Random;
 
 public class TreapDemo {
@@ -13,7 +14,12 @@ public class TreapDemo {
         
         treap.insert(11);
         treap.insert(12);
-    
+        treap.insert(5);
+        treap.insert(6);
+        treap.insert(6);
+        treap.insert(6);
+        treap.insert(6);
+        
         System.out.println(treap.getKeyByRank(1));
         System.out.println(treap.getKeyByRank(6));
         
@@ -45,8 +51,13 @@ class Treap {
     public Treap() {
     }
     
+    public Treap(Collection<Integer> collection) {
+        for (int x : collection) {
+            insert(x);
+        }
+    }
+    
     public Treap(int[] A) {
-        this();
         for (int x : A) {
             insert(x);
         }
@@ -63,12 +74,12 @@ class Treap {
             if (key < root.key) {
                 root.left = insert(root.left, key);
                 if (root.left != null && root.left.val > root.val) {
-                    return zig(root);
+                    root = zig(root);
                 }
             } else if (key > root.key) {
                 root.right = insert(root.right, key);
                 if (root.right != null && root.right.val > root.val) {
-                    return zag(root);
+                    root = zag(root);
                 }
             } else {
                 root.cnt++;

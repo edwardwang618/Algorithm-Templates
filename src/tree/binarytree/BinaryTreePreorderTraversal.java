@@ -42,15 +42,15 @@ public class BinaryTreePreorderTraversal {
             return;
         }
         
-        Deque<TreeNode> stack = new LinkedList<>();
+        Deque<TreeNode> stk = new LinkedList<>();
         
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            root = stack.pop();
+        stk.push(root);
+        while (!stk.isEmpty()) {
+            root = stk.pop();
             while (root != null) {
                 res.add(root.val);
                 if (root.right != null) {
-                    stack.push(root.right);
+                    stk.push(root.right);
                 }
                 
                 root = root.left;

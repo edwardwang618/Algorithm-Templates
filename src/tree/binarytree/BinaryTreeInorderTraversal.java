@@ -42,14 +42,14 @@ public class BinaryTreeInorderTraversal {
             return;
         }
         
-        Deque<TreeNode> stack = new LinkedList<>();
-        while (!stack.isEmpty() || root != null) {
+        Deque<TreeNode> stk = new LinkedList<>();
+        while (!stk.isEmpty() || root != null) {
             while (root != null) {
-                stack.push(root);
+                stk.push(root);
                 root = root.left;
             }
             
-            root = stack.pop();
+            root = stk.pop();
             res.add(root.val);
             root = root.right;
         }
