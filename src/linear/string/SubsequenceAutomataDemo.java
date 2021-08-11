@@ -3,18 +3,17 @@ package linear.string;
 public class SubsequenceAutomataDemo {
     public static void main(String[] args) {
         String s = "abcba#";
-        int[][] auto = buildAutomata(s);
-        System.out.println(isSubsequence("ab", auto));
-        System.out.println(isSubsequence("cba", auto));
-        System.out.println(isSubsequence("#", auto));
-        System.out.println(isSubsequence("", auto));
+        int[][] dfa = buildDfa(s);
+        System.out.println(isSubsequence("ab", dfa));
+        System.out.println(isSubsequence("cba", dfa));
+        System.out.println(isSubsequence("#", dfa));
+        System.out.println(isSubsequence("", dfa));
     }
     
     static boolean isSubsequence(String t, int[][] auto) {
-        int idx = 0;
-        for (int i = 0; i < t.length(); i++) {
-            idx = auto[idx][t.charAt(i)];
-            if (idx == 0) {
+        for (int i = 0, pos = 0; i < t.length(); i++) {
+            pos = auto[pos][t.charAt(i)];
+            if (pos == 0) {
                 return false;
             }
         }
@@ -22,15 +21,15 @@ public class SubsequenceAutomataDemo {
         return true;
     }
     
-    static int[][] buildAutomata(String s) {
-        int[][] auto = new int[s.length() + 1][128];
+    static int[][] buildDfa(String s) {
+        int[][] dfa = new int[s.length() + 1][128];
         for (int i = s.length() - 1; i >= 0; i--) {
             for (char j = 0; j < 128; j++) {
-                auto[i][j] = auto[i + 1][j];
+                dfa[i][j] = dfa[i + 1][j];
             }
-            auto[i][s.charAt(i)] = i + 1;
+            dfa[i][s.charAt(i)] = i + 1;
         }
         
-        return auto;
+        return dfa;
     }
 }

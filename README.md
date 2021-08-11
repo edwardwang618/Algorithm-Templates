@@ -12,7 +12,7 @@ Topics included and will include:
 
 5. Binary Tree, the preorder, inorder, postorder traversal (DFS), the recursion and stack implementations of them; the level order traversal (BFS); how divide and conquer algorithms work on binary trees, Huffman Tree
 
-6. Heap (priority queue), Leftist Heap, Heap Sort
+6. Heap (priority queue), Leftist Heap, Hash Heap, Heap Sort
 
 7. Binary Search Tree (BST), Balanced Binary Search Tree (BBST), Treap (implementation), Splay (implementation), AVL Tree, Red Black Tree.  
 
@@ -36,13 +36,13 @@ Topics included and will include:
 
 17. Dynamic Programming and Memorized DFS, Backpak Problems, Linear Dp, Interval Dp, Counting Dp, State Compression Dp, Dp on Trees, Monotone Queue Optimization, State Machine
 
-18. Bi-directional Breadth First Search, 0-1 BFS (BFS with deque), Iterative Depth First Search. A* Algorithm, IDA* Algorithm, DFS Branch Cutting
+18. Bi-directional Breadth First Search, 0-1 BFS (BFS with deque), Iterative Depth First Search (IDFS). A* Algorithm, IDA* Algorithm, DFS Branch Cutting
 
 19. Persistent Trie, Persistent Segment Tree (Chairman Tree)
 
-20. Eulerien Path. Bridge and Cut Point in a Graph, Strong Connected Component on Directed Graph (scc), Biconnected Component on Undirected Graph, Tarjan Algorithm.
+20. Euler Path. Bridge and Cut Point in a Graph, Strong Connected Component on Directed Graph (scc), Bi-connected Component on Undirected Graph, Tarjan Algorithm.
 
-21. Fast Power (recursion and non-recursion impelmentation, Matrix Multiplication), Sieve of Eratosthenes, Sieve of Euler, Euclid Algorithm to find Greatest Common Divisor. Inversion. Inclusion-exclusion Principle.
+21. Fast Power (recursion and non-recursion implementation, Matrix Multiplication), Sieve of Eratosthenes, Sieve of Euler, Euclid Algorithm to find Greatest Common Divisor. Inversion. Inclusion-exclusion Principle.
 
 22. Probability, Expectation.
 
