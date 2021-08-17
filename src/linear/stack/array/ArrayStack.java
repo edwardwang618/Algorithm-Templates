@@ -1,5 +1,9 @@
 package linear.stack.array;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
+
 public class ArrayStack {
     public static void main(String[] args) {
         Stack stack = new Stack(10);

@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class BlockArrayDemo {
     public static void main(String[] args) {
-        // when adding, you can only add nonnegative numbers
         int[] A = {1, 2, 3, 4, 5, 0};
         BlockArray blockArray = new BlockArray(A);
         System.out.println(blockArray.max(1, 3));

@@ -17,14 +17,13 @@ public class ExpressionValuationInfix {
                 '+', 1, '-', 1,
                 '*', 2, '/', 2);
         
-        Deque<Integer> stack = new ArrayDeque<>();
+        Deque<Integer> stk = new ArrayDeque<>();
         // maintain the stack op as a monotone stack, op stores the operators
         // in the increasing order from button to the top
         Deque<Character> op = new ArrayDeque<>();
         
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            
             if (ch == ' ') {
                 continue;
             }
@@ -37,28 +36,29 @@ public class ExpressionValuationInfix {
                     j++;
                 }
                 
-                stack.push(Integer.parseInt(s.substring(i, j)));
+                stk.push(Integer.parseInt(s.substring(i, j)));
                 i = j - 1;
             } else if (prio.containsKey(ch)) {
                 while (!op.isEmpty() && prio.get(op.peek()) >= prio.get(ch)) {
-                    calc(stack, op);
+                    calc(stk, op);
                 }
                 
                 op.push(ch);
             } else if (ch == ')') {
                 while (op.peek() != '(') {
-                    calc(stack, op);
+                    calc(stk, op);
                 }
                 
+                // pop '('
                 op.pop();
             }
         }
         
         while (!op.isEmpty()) {
-            calc(stack, op);
+            calc(stk, op);
         }
         
-        return stack.peek();
+        return stk.peek();
     }
     
     private static void calc(Deque<Integer> stack, Deque<Character> op) {

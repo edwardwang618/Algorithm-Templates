@@ -1,32 +1,22 @@
 package tree.bbst;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Random;
 
 public class TreapDemo {
     public static void main(String[] args) {
-        int[] A = {1, 3, 6, 10, -1, -1};
-        Treap treap = new Treap(A);
-        System.out.println(treap.getKeyByRank(1));
-        System.out.println(treap.getKeyByRank(2));
+        Random rand = new Random();
+        List<Integer> list = new ArrayList<>();
+        int size = 10000000;
+        for (int i = 0; i < size; i++) {
+            list.add(rand.nextInt());
+        }
         
-        System.out.println(treap.getKeyByRank(3));
-        
-        treap.insert(11);
-        treap.insert(12);
-        treap.insert(5);
-        treap.insert(6);
-        treap.insert(6);
-        treap.insert(6);
-        treap.insert(6);
-        
-        System.out.println(treap.getKeyByRank(1));
-        System.out.println(treap.getKeyByRank(6));
-        
-        treap.remove(-1);
-        treap.remove(-1);
-        System.out.println(treap.getKeyByRank(1));
-        System.out.println(treap.getKeyByRank(6));
+        System.out.println(Math.log(size) / Math.log(2));
+        Treap treap = new Treap(list);
+        System.out.println(treap.getHeight());
     }
 }
 
@@ -176,5 +166,17 @@ class Treap {
         if (node.right != null) {
             node.size += node.right.size;
         }
+    }
+    
+    public int getHeight() {
+        return getHeight(root);
+    }
+    
+    private int getHeight(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        
+        return 1 + Math.max(getHeight(root.left), getHeight(root.right));
     }
 }
