@@ -7,7 +7,7 @@ public class BlockArrayDemo {
         int[] A = {1, 2, 3, 4, 5, 0};
         BlockArray blockArray = new BlockArray(A);
         System.out.println(blockArray.max(1, 3));
-        blockArray.add(1, 4, 2);
+        blockArray.add(1, 4, -2);
         System.out.println(blockArray.max(1, 3));
         
         System.out.println(blockArray.max(3, 5));
@@ -17,12 +17,12 @@ public class BlockArrayDemo {
 }
 
 class BlockArray {
-    final private int len;
+    final private int len, n;
     final private int[] A, max, lazy, sum;
     
     public BlockArray(int[] a) {
         A = a;
-        int n = a.length;
+        n = a.length;
         len = (int) Math.sqrt(n);
         int cnt = n % len == 0 ? n / len : n / len + 1;
         max = new int[cnt];
@@ -65,38 +65,68 @@ class BlockArray {
         return res;
     }
     
+    public int sum(int l, int r) {
+        int res = 0;
+        if (get(l) == get(r)) {
+            for (int i = l; i <= r; i++) {
+                res += A[i] + lazy[get(i)];
+            }
+        } else {
+            int i = l, j = r;
+            while (get(i) == get(l)) {
+                res += A[i] + lazy[get(i)];
+                i++;
+            }
+            while (get(j) == get(r)) {
+                res += A[j] + lazy[get(j)];
+                j--;
+            }
+            for (int k = get(i); k <= get(j); k++) {
+                res += sum[k];
+            }
+        }
+        
+        return res;
+    }
+    
     // add x on [l : r], x any number
     public void add(int l, int r, int x) {
         if (get(l) == get(r)) {
-            for (int i = l; i <= r; i++) {
-                A[i] += x;
-                sum[get(i)] += x;
+            int i = get(l);
+            for (int k = l; k <= r; k++) {
+                A[k] += x;
+                sum[i] += x;
             }
-            // l is the index for the first element of the get(l)'s block
-            l = get(l) * len;
-            r = Math.min(A.length - 1, (get(l) + 1) * len - 1);
-            
+            max[i] = Integer.MIN_VALUE;
+            for (int k = i * len; k < Math.min(n, (i + 1) * len); k++) {
+                max[i] = Math.max(max[i], A[k]);
+            }
         } else {
             int i = l, j = r;
             while (get(i) == get(l)) {
                 A[i] += x;
-                max[get(i)] = Math.max(max[get(i)], A[i]);
+                sum[get(i)] += x;
                 i++;
+            }
+            max[get(l)] = Integer.MIN_VALUE;
+            for (int k = get(l) * len; k < (get(l) + 1) * len; k++) {
+                max[get(l)] = Math.max(max[get(l)], A[k]);
             }
             while (get(j) == get(r)) {
                 A[j] += x;
-                max[get(j)] = Math.max(max[get(j)], A[j]);
+                sum[get(j)] += x;
                 j--;
+            }
+            max[get(r)] = Integer.MAX_VALUE;
+            for (int k = get(r) * len; k < Math.min(n, (get(r) + 1) * len); k++) {
+                max[get(r)] = Math.max(max[get(r)], A[k]);
             }
             for (int k = get(i); k <= get(j); k++) {
                 max[k] += x;
                 lazy[k] += x;
+                sum[k] += x * len;
             }
         }
-    }
-    
-    private void updateMax(){
-
     }
 }
 

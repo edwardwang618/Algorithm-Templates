@@ -10,9 +10,9 @@ public class SubsequenceAutomataDemo {
         System.out.println(isSubsequence("", dfa));
     }
     
-    static boolean isSubsequence(String t, int[][] auto) {
+    static boolean isSubsequence(String t, int[][] dfa) {
         for (int i = 0, pos = 0; i < t.length(); i++) {
-            pos = auto[pos][t.charAt(i)];
+            pos = dfa[pos][t.charAt(i)];
             if (pos == 0) {
                 return false;
             }

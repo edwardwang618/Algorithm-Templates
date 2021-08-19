@@ -24,17 +24,17 @@ Topics included and will include:
 
 11. Union Find (discretization)
 
-12. Binary Indexed Tree (Fenwick Tree), Segment Tree (lazy tagging), Scan Line Algorithm, Block Array (lazy tagging)
+12. Hash Table (Hashset and Hashmap)
 
-13. Hash Table (Hashset and Hashmap)
+13. Binary Indexed Tree (Fenwick Tree), Segment Tree (lazy tagging), Scan Line Algorithm, Block Array (lazy tagging)
 
-14. Graph (its Adjacency Matrix and Adjacency List implementations), Depth First Search, Breadth First Search, Topological Sort (its BFS and DFS implementations). Shortest Path Algorithms (Dijkstra Algorithm on sparse graph and dense graph, Bellman-Ford Algorithm, Floyd Algorithm, SPFA). Linear Time Shortest Path Algorithm on Directed Acyclic Graph. Minimum Spanning Tree Algorithms (Prim Algorithm, Kruskal Algorithm). Bipartite Graph (Bipartite Testing using BFS, DFS or Union Find, Hungarian Algorithm). Negative Circle.
+14. Breadth First Search, Depth First Search, Bi-directional Breadth First Search, 0-1 BFS (BFS with deque), Iterative Depth First Search (IDFS). A* Algorithm, IDA* Algorithm, DFS Branch Cutting
 
-15. Euler Path. Bridge and Cut Point in a Graph, Strong Connected Component on Directed Graph (scc), Bi-connected Component on Undirected Graph, Tarjan Algorithm.
+15. Graph (its Adjacency Matrix and Adjacency List implementations), Depth First Search, Breadth First Search, Topological Sort (its BFS and DFS implementations). Shortest Path Algorithms (Dijkstra Algorithm on sparse graph and dense graph, Bellman-Ford Algorithm, Floyd Algorithm, SPFA). Linear Time Shortest Path Algorithm on Directed Acyclic Graph. Minimum Spanning Tree Algorithms (Prim Algorithm, Kruskal Algorithm). Bipartite Graph (Bipartite Testing using BFS, DFS or Union Find, Hungarian Algorithm). Negative Circle.
 
-16. Breadth First Search, Depth First Search, Bi-directional Breadth First Search, 0-1 BFS (BFS with deque), Iterative Depth First Search (IDFS). A* Algorithm, IDA* Algorithm, DFS Branch Cutting
+16. Euler Path. Bridge and Cut Point in a Graph, Strong Connected Component on Directed Graph (scc), Bi-connected Component on Undirected Graph, Tarjan Algorithm.
 
-17. Lowest Common Ancestor on Trees, Sparse Table
+17. Lowest Common Ancestor on Trees, RMQ and Sparse Table
 
 18. Bit Operation, Bloom Filter
 
@@ -50,10 +50,8 @@ Topics included and will include:
 
 24. Game Theory, Bash Game and Nim Game, SG Function
 
-25. Range Minimum Query and Sparse Table. 
+25. Suffix Array, Height Array, Suffix Automata
 
-26. Suffix Array, Height Array, Suffix Automata
+26. Network Flow (EK Algorithm, Dinic Algorithm, Max Flow Min Cut), Matching Problems on Bipartite Graph
 
-27. Network Flow (EK Algorithm, Dinic Algorithm, Max Flow Min Cut), Matching Problems on Bipartite Graph
-
-28. Number Theory, Factorization
+27. Number Theory, Factorization
