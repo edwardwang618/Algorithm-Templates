@@ -3,8 +3,7 @@ package linear.array.sort;
 public class QuickSelect {
     public static void main(String[] args) {
         int[] A = {2, 4, 1, 3, 10, 7};
-        int res = quickSelect(A, 1);
-        System.out.println(res);
+        System.out.println(quickSelect(A, 1));
     }
     
     public static int quickSelect(int[] A, int idx) {

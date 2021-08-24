@@ -1,22 +1,25 @@
 package tree.bbst;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class TreapDemo {
     public static void main(String[] args) {
-        Random rand = new Random();
-        List<Integer> list = new ArrayList<>();
-        int size = 10000000;
-        for (int i = 0; i < size; i++) {
-            list.add(rand.nextInt());
-        }
+        // Random rand = new Random();
+        // List<Integer> list = new ArrayList<>();
+        // int size = 10000000;
+        // for (int i = 0; i < size; i++) {
+        //     list.add(rand.nextInt());
+        // }
+        //
+        // System.out.println(Math.log(size) / Math.log(2));
+        // Treap treap = new Treap(list);
+        // System.out.println(treap.getHeight());
         
-        System.out.println(Math.log(size) / Math.log(2));
-        Treap treap = new Treap(list);
-        System.out.println(treap.getHeight());
+        TreeSet<Integer> set = new TreeSet<>();
+        set.add(1);
+        set.add(2);
+        set.add(3);
+        System.out.println(set.headSet(3).size());
     }
 }
 

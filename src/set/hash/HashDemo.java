@@ -1,55 +1,62 @@
 package set.hash;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class HashDemo {
     public static void main(String[] args) {
-        System.out.println(((Integer) 42).hashCode());
-        System.out.println(((Integer) (-42)).hashCode());
-        System.out.println(((Double) 3.1415926).hashCode());
-        
-        System.out.println("imooc".hashCode());
-        Student student = new Student(3, 2, "bobo", "liu");
-        System.out.println(student.hashCode());
-        
+        Student s1 = new Student(1, "Mike");
+        Student s2 = new Student(1, "Chris");
+        System.out.println(s1.equals(s2));
         Set<Student> set = new HashSet<>();
-        set.add(student);
-        Student student2 = new Student(3, 2, "bobo", "liu");
-        System.out.println(student2.hashCode());
+        set.add(s1);
+        System.out.println(set);
+        s1.firstName = "Chris";
+        System.out.println(set);
+        set.add(s2);
+        System.out.println(set);
+        
+        byte x = -20;
+        System.out.println(Integer.toBinaryString(x));
+        System.out.println(x & 0xff);
+        
+        int y = 13331;
+        int z = (int) (Math.log(y) / Math.log(2));
+        System.out.println(1 << 13);
+    
+        int N = (int) (2e5 + 5);
+        System.out.println(1 << 18);
+        System.out.println(Math.log(N) / Math.log(2) + 1);
     }
 }
 
 class Student {
     int grade;
-    int cls;
     String firstName;
-    String lastName;
     
-    public Student(int grade, int cls, String firstName, String lastName) {
+    public Student(int grade, String firstName) {
         this.grade = grade;
-        this.cls = cls;
         this.firstName = firstName;
-        this.lastName = lastName;
     }
     
-    @Override
-    public int hashCode() {
-        int B = 31;
-        int hash = 0;
-        hash = hash * B + grade;
-        hash = hash * B + cls;
-        hash = hash * B + firstName.hashCode();
-        hash = hash * B + lastName.hashCode();
-        return hash;
-    }
     
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null) return false;
-        if (getClass() != o.getClass()) return false;
-        Student another = (Student) o;
-        return this.grade == another.grade && this.cls == another.cls && this.firstName.equals(another.firstName) && this.lastName.equals(another.lastName);
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return grade == student.grade && Objects.equals(firstName, student.firstName);
+    }
+    
+    @Override
+    public int hashCode() {
+        return Objects.hash(grade, firstName);
+    }
+    
+    @Override
+    public String toString() {
+        return "Student{" +
+                "grade=" + grade +
+                ", firstName='" + firstName + '\'' +
+                '}';
     }
 }

@@ -11,9 +11,10 @@ public class RabinKarp {
         System.out.println(isSubStr(s, "ac"));
     }
  
-    public static boolean isSubStr(String s, String p) {
+    public static int isSubStr(String s, String p) {
+        // first rule out the impossible case
         if (p.length() > s.length()) {
-            return false;
+            return -1;
         }
         
         long hash = 0, pow = 1;
@@ -26,18 +27,19 @@ public class RabinKarp {
         }
         
         if (hash == hashP) {
-            return true;
+            return 0;
         }
-    
+        
+        // its rolling hash
         for (int i = p.length(); i < s.length(); i++) {
             hash = hash * P + s.charAt(i);
             hash -= s.charAt(i - p.length()) * pow;
     
             if (hash == hashP) {
-                return true;
+                return i - p.length() + 1;
             }
         }
-        
-        return false;
+    
+        return -1;
     }
 }

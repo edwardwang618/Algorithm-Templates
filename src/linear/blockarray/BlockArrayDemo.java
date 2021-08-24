@@ -24,7 +24,7 @@ class BlockArray {
         A = a;
         n = a.length;
         len = (int) Math.sqrt(n);
-        int cnt = n % len == 0 ? n / len : n / len + 1;
+        int cnt = (n - 1) / len + 1;
         max = new int[cnt];
         Arrays.fill(max, Integer.MIN_VALUE);
         sum = new int[cnt];
