@@ -10,7 +10,7 @@ public class KMP2 {
         System.out.println(kmp("abbabc", "ba"));
         System.out.println(kmp("abbabc", ""));
         System.out.println(kmp("", ""));
-    
+        
         String p = "aaaab";
         System.out.println(Arrays.toString(buildNext(p)));
         System.out.println(Arrays.toString(KMP1.buildNext(p)));
@@ -40,8 +40,7 @@ public class KMP2 {
     
     public static int[] buildNext(String p) {
         int[] ne = new int[p.length()];
-        ne[0] = -1;
-        for (int i = 0, j = -1; i < p.length() - 1; ) {
+        for (int i = 0, j = ne[0] = -1; i < p.length() - 1; ) {
             if (j == -1 || p.charAt(i) == p.charAt(j)) {
                 i++;
                 j++;

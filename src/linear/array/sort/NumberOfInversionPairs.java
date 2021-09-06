@@ -17,22 +17,22 @@ public class NumberOfInversionPairs {
             return 0;
         }
         
-        int m = l + (r - l >> 1);
+        int mid = l + (r - l >> 1);
         int res = 0;
-        res += mergeSort(A, l, m, tmp);
-        res += mergeSort(A, m + 1, r, tmp);
+        res += mergeSort(A, l, mid, tmp);
+        res += mergeSort(A, mid + 1, r, tmp);
         
-        int i = l, j = m + 1, idx = l;
-        while (i <= m && j <= r) {
+        int i = l, j = mid + 1, idx = l;
+        while (i <= mid && j <= r) {
             if (A[i] > A[j]) {
-                res += m - i + 1;
+                res += mid - i + 1;
                 tmp[idx++] = A[j++];
             } else {
                 tmp[idx++] = A[i++];
             }
         }
         
-        while (i <= m) {
+        while (i <= mid) {
             tmp[idx++] = A[i++];
         }
         while (j <= r) {

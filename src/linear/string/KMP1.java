@@ -64,8 +64,7 @@ public class KMP1 {
     
     public static int[] buildNext(String p) {
         int[] ne = new int[p.length()];
-        ne[0] = -1;
-        for (int i = 0, j = -1; i < p.length() - 1; ) {
+        for (int i = 0, j = ne[0] = -1; i < p.length() - 1; ) {
             if (j == -1 || p.charAt(i) == p.charAt(j)) {
                 ne[++i] = ++j;
             } else {
