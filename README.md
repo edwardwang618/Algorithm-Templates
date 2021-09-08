@@ -4,7 +4,7 @@ Topics included and will include:
 
 1. Array, Two Pointers algorithm, Prefix Sum Array, Difference Array, Binary Search, sorting algorithms over array (Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, Bucket Sort), Divide and Conquer, Quick Select, Inversion Pairs Counting
 
-2. Linked list (Single Linked List, Double Linked List, Circular Linkded List), Two Pointers Algorithm, Selection Sort and Merge Sort over Linked List
+2. Linked list (Single Linked List, Double Linked List, Circular Linkded List), Two Pointers Algorithm, Selection Sort and Merge Sort over Linked List, Floyd Algorithm
 
 3. Stack (its array and linked list implementations, its relation with recursion and DFS), Monotone Stack (possibly with Binary Search), Expression Valuation Algorithm
 
@@ -12,7 +12,7 @@ Topics included and will include:
 
 5. String, KMP Algorithm (automata, the shortest repeated component), Rabin Karp Algorithm, String Hash (Prefix Hash Array, High-left-low-right hashing, Low-left-high-right hashing), Subsequence Automata. Arbitrary-precision Addition and Subtraction
 
-6. Binary Tree, the preorder, inorder, postorder traversal (DFS), the recursion and stack implementations of them; the level order traversal (BFS); how divide and conquer algorithms work on binary trees, Huffman Tree
+6. Binary Tree, the preorder, inorder, postorder traversal (DFS), the recursion and stack implementations of them, Morris traversal; the level order traversal (BFS); how divide and conquer algorithms work on binary trees, Huffman Tree
 
 7. Heap (Priority Queue), Leftist Heap, Heap Sort
 
