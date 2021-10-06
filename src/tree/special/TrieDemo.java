@@ -44,7 +44,7 @@ class Trie {
         }
     }
     
-    Node root;
+    final Node root;
     
     public Trie() {
         root = new Node();

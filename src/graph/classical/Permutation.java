@@ -6,7 +6,7 @@ import java.util.List;
 public class Permutation {
     public static void main(String[] args) {
         List<List<Integer>> res = new ArrayList<>();
-        int[] A = {1, 2, 3};
+        int[] A = {1, 2, 3, 4, 5, 6};
         dfs(A, new boolean[A.length], new ArrayList<>(), res);
         System.out.println(res);
     }

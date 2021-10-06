@@ -14,9 +14,9 @@ Topics included and will include:
 
 6. Binary Tree, the preorder, inorder, postorder traversal (DFS), the recursion and stack implementations of them, Morris traversal; the level order traversal (BFS); how divide and conquer algorithms work on binary trees, Huffman Tree
 
-7. Heap (Priority Queue), Leftist Heap, Heap Sort
+7. Heap (Priority Queue), Leftist Heap, Heap Sort, Paired Heap
 
-8. Binary Search Tree (BST), Balanced Binary Search Tree (BBST), Treap (implementation), Splay (implementation), AVL Tree, Red Black Tree.  
+8. Binary Search Tree (BST), Balanced Binary Search Tree (BBST), Treap (implementation), Splay (implementation), AVL Tree, Red Black Tree.
 
 9. N-ary Tree, B tree, B+ tree.
 

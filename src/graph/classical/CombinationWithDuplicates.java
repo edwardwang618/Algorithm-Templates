@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CombinationWithDuplicates {
     public static void main(String[] args) {
-        int[] A = {2, 2, 1};
+        int[] A = {2, 2, 1, 1};
         Arrays.sort(A);
         
         List<List<Integer>> res = new ArrayList<>();
