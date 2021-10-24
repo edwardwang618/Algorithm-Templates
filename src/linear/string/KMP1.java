@@ -12,6 +12,7 @@ public class KMP1 {
         System.out.println(kmp("", ""));
         
         String p = "aaaaa";
+        p = "abcd";
         int[] ne = buildNext(p + '#');
         System.out.println(Arrays.toString(ne));
         System.out.println(p.length() - ne[p.length()]);
