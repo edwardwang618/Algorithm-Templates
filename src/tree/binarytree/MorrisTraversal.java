@@ -11,8 +11,8 @@ public class MorrisTraversal {
         root.left.right = new TreeNode(3);
         root.right = new TreeNode(5);
         List<Integer> list = new ArrayList<>();
-        
-        // inorder(root, list);
+
+//        inorder(root, list);
         // preorder(root, list);
         postorder(root, list);
         System.out.println(list);
@@ -21,71 +21,74 @@ public class MorrisTraversal {
     static void preorder(TreeNode root, List<Integer> list) {
         TreeNode cur = root;
         while (cur != null) {
-            TreeNode left = cur.left;
-            if (left != null) {
-                while (left.right != null && left.right != cur) {
-                    left = left.right;
-                }
-                
-                if (left.right == null) {
-                    left.right = cur;
-                    list.add(cur.val);
-                    cur = cur.left;
-                    continue;
-                } else {
-                    left.right = null;
-                }
-            } else {
+            if (cur.left == null) {
                 list.add(cur.val);
+                cur = cur.right;
+                continue;
             }
             
-            cur = cur.right;
+            TreeNode left = cur.left;
+            while (left.right != null && left.right != cur) {
+                left = left.right;
+            }
+            
+            if (left.right == null) {
+                list.add(cur.val);
+                left.right = cur;
+                cur = cur.left;
+            } else {
+                left.right = null;
+                cur = cur.right;
+            }
         }
     }
     
     static void inorder(TreeNode root, List<Integer> list) {
         TreeNode cur = root;
         while (cur != null) {
-            TreeNode left = cur.left;
-            if (left != null) {
-                while (left.right != null && left.right != cur) {
-                    left = left.right;
-                }
-                
-                if (left.right == null) {
-                    left.right = cur;
-                    cur = cur.left;
-                    continue;
-                } else {
-                    left.right = null;
-                }
+            if (cur.left == null) {
+                list.add(cur.val);
+                cur = cur.right;
+                continue;
             }
             
-            list.add(cur.val);
-            cur = cur.right;
+            TreeNode left = cur.left;
+            while (left.right != null && left.right != cur) {
+                left = left.right;
+            }
+            
+            if (left.right == null) {
+                left.right = cur;
+                cur = cur.left;
+            } else {
+                left.right = null;
+                list.add(cur.val);
+                cur = cur.right;
+            }
         }
     }
     
     static void postorder(TreeNode root, List<Integer> list) {
         TreeNode cur = root;
         while (cur != null) {
-            TreeNode left = cur.left;
-            if (left != null) {
-                while (left.right != null && left.right != cur) {
-                    left = left.right;
-                }
-                
-                if (left.right == null) {
-                    left.right = cur;
-                    cur = cur.left;
-                    continue;
-                } else {
-                    left.right = null;
-                    addEdge(cur.left, list);
-                }
+            if (cur.left == null) {
+                cur = cur.right;
+                continue;
             }
             
-            cur = cur.right;
+            TreeNode left = cur.left;
+            while (left.right != null && left.right != cur) {
+                left = left.right;
+            }
+            
+            if (left.right == null) {
+                left.right = cur;
+                cur = cur.left;
+            } else {
+                left.right = null;
+                addEdge(cur.left, list);
+                cur = cur.right;
+            }
         }
         
         addEdge(root, list);
@@ -93,12 +96,13 @@ public class MorrisTraversal {
     
     static void addEdge(TreeNode cur, List<Integer> list) {
         TreeNode tail = reverse(cur);
+        cur = tail;
         while (tail != null) {
             list.add(tail.val);
             tail = tail.right;
         }
         
-        reverse(tail);
+        reverse(cur);
     }
     
     static TreeNode reverse(TreeNode head) {

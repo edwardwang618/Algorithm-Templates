@@ -11,10 +11,6 @@ public class RabinKarp {
         System.out.println(isSubStr(s, "ce"));
         System.out.println(isSubStr(s, "sce"));
         System.out.println(isSubStr(s, "ac"));
-    
-        Map<Integer, String> map = Map.of(
-                2, "ABC", 3, "DEF", 4, "GHI", 5, "JKL", 6, "MNO",
-                7, "PQRS", 8, "TUV", 9, "WXYZ");
     }
  
     public static int isSubStr(String s, String p) {
