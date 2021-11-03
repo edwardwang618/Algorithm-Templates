@@ -16,9 +16,9 @@ Topics included and will include:
 
 7. Heap (Priority Queue), Leftist Heap, Heap Sort, Paired Heap
 
-8. Binary Search Tree (BST), Balanced Binary Search Tree (BBST), Treap (implementation), Splay (implementation), AVL Tree, Red Black Tree.
+8. Binary Search Tree (BST), Balanced Binary Search Tree (BBST), Treap and fhq Treap (implementation), Splay (implementation), AVL Tree, Red Black Tree.
 
-9. N-ary Tree, B tree, B+ tree.
+9. N-ary Tree, the preorder and postorder traversal (DFS), the recursion and stack impelementations, B tree, B+ tree.
 
 10. Trie, AC Automata
 

@@ -1,6 +1,5 @@
 package tree.heap;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class BinaryHeapDemo {
@@ -10,16 +9,16 @@ public class BinaryHeapDemo {
         BinaryHeap heap = new BinaryHeap(A);
         System.out.println("heap.peek() = " + heap.peek());
         System.out.println("heap.pop() = " + heap.pop());
-    
+        
         heap.replace(-1);
         System.out.println("heap.peek() = " + heap.peek());
-    
+        
         System.out.println("===============");
         int[] arr = new int[new Random().nextInt(1000000)];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = new Random().nextInt(100000);
         }
-    
+        
         BinaryHeap heap1 = new BinaryHeap(arr);
         int cur = heap1.peek();
         for (int i = 0; i < arr.length; i++) {
@@ -28,7 +27,7 @@ public class BinaryHeapDemo {
             }
             cur = heap1.pop();
         }
-    
+        
         System.out.println("heap1.isEmpty() = " + heap1.isEmpty());
     }
 }
@@ -41,63 +40,55 @@ class BinaryHeap {
     private int size;
     
     public BinaryHeap(int maxSize) {
-        heap = new int[maxSize];
+        heap = new int[maxSize + 1];
     }
     
     public BinaryHeap(int[] heap) {
-        this.heap = Arrays.copyOf(heap, heap.length);
+        this.heap = new int[heap.length + 1];
+        System.arraycopy(heap, 0, this.heap, 1, heap.length);
         size = heap.length;
         heapify();
     }
     
     private void heapify() {
-        for (int i = heap.length - 2 >> 1; i >= 0; i--) {
+        for (int i = size >> 1; i >= 1; i--) {
             siftDown(i);
         }
     }
     
     public int peek() {
-        if (isEmpty()) {
-            throw new RuntimeException("Illegal peek");
-        }
-        
-        return heap[0];
+        return heap[1];
     }
     
     public void push(int x) {
-        if (size == heap.length) {
-            throw new RuntimeException("Illegal push");
-        }
-        
-        heap[size++] = x;
-        siftUp(size - 1);
+        heap[++size] = x;
+        siftUp(size);
     }
     
     public int pop() {
-        int res = heap[0];
-        heap[0] = heap[--size];
-        siftDown(0);
+        int res = heap[1];
+        heap[1] = heap[size--];
+        siftDown(1);
         
         return res;
     }
     
     private void siftDown(int pos) {
         int cur = heap[pos];
-        while (leftChild(pos) < size) {
-            int smallerIdx = leftChild(pos);
-            if (smallerIdx + 1 < size) {
-                int rightIdx = smallerIdx + 1;
-                if (heap[rightIdx] < heap[smallerIdx]) {
-                    smallerIdx = rightIdx;
+        while (pos << 1 < size) {
+            int s = pos << 1;
+            if (s + 1 < size) {
+                if (heap[s + 1] < heap[s]) {
+                    s++;
                 }
             }
             
-            if (cur <= heap[smallerIdx]) {
+            if (cur <= heap[s]) {
                 break;
             }
             
-            heap[pos] = heap[smallerIdx];
-            pos = smallerIdx;
+            heap[pos] = heap[s];
+            pos = s;
         }
         
         heap[pos] = cur;
@@ -105,11 +96,11 @@ class BinaryHeap {
     
     private void siftUp(int pos) {
         int cur = heap[pos];
-        while (pos > 0) {
-            int parent = heap[pos - 1 >> 1];
+        while (pos > 1) {
+            int parent = heap[pos >> 1];
             if (parent > cur) {
                 heap[pos] = parent;
-                pos = pos - 1 >> 1;
+                pos = pos >> 1;
             } else {
                 break;
             }
@@ -119,7 +110,7 @@ class BinaryHeap {
     }
     
     private int leftChild(int pos) {
-        return pos * 2 + 1;
+        return pos * 2;
     }
     
     public int size() {
@@ -131,11 +122,7 @@ class BinaryHeap {
     }
     
     public void replace(int x) {
-        if (isEmpty()) {
-            throw new RuntimeException("Illegal replace");
-        }
-        
-        heap[0] = x;
-        siftDown(0);
+        heap[1] = x;
+        siftDown(1);
     }
 }
